@@ -11,8 +11,7 @@
   ],
   "homepage": "https://github.com/capriza/node-proxying-agent/",
   "author": {
-    "name": "Nadav Fischer",
-    "email": "nadav.fischer@capriza.com"
+    "name": "Nadav Fischer"
   },
   "main": "./index.js",
   "licenses": {

@@ -1,10 +1,10 @@
-# node-proxying-agent - Node HTTP/HTTPS Agent for connecting through forward proxies
+# node-proxying-agent - Forward HTTP/HTTPS Proxy Agent
 
-This an HTTP/HTTPS proxy agent capable of forward proxying HTTP requests.
+This an HTTP/HTTPS proxy agent capable of forward proxying HTTP/HTTPS requests.
 
 It supports the following:
 * Connect to a proxy with a regular socket or SSL/TLS socket
-* Proxy to a remote server using for SSL tunneling (via the http CONNECT method)
+* Proxying to a remote server using SSL tunneling (via the http CONNECT method)
 * Authenticate with a proxy with Basic authentication
 * Authenticate with a proxy with NTLM authentication (experimental). Depends on ``node-ntlm``
 
