@@ -1,6 +1,6 @@
-# Forward HTTP/HTTPS Proxy Agent
+# HTTP/HTTPS Forward Proxy Agent
 
-This an HTTP/HTTPS proxy agent capable of forward proxying HTTP/HTTPS requests.
+This an HTTP/HTTPS agent capable of forward proxying HTTP/HTTPS requests.
 
 It supports the following:
 * Connect to a proxy with a regular socket or SSL/TLS socket
