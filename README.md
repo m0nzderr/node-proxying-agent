@@ -42,6 +42,6 @@ The following options are supported:
     following fields:
     * ``hostname`` - the local machine hostname
     * ``domain`` - the NTLM domain
-    * ``username - the NTLM username
-    * ``username - the NTLM password
+    * ``username`` - the NTLM username
+    * ``password`` - the NTLM password
 
