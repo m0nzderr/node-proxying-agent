@@ -1,4 +1,4 @@
-# node-proxying-agent - Forward HTTP/HTTPS Proxy Agent
+# Forward HTTP/HTTPS Proxy Agent
 
 This an HTTP/HTTPS proxy agent capable of forward proxying HTTP/HTTPS requests.
 
