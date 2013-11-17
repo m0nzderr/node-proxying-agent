@@ -21,7 +21,7 @@ the socket handling goodies that come with it.
   var proxying = require('proxying-agent');
   var proxyingOptions = {
     proxy: 'http://username:password@proxy.example.com:8080',
-    server: 'https://server.example.com:443'
+    tunnel: true
   };
   var proxyingAgent = new proxying.ProxyingAgent(proxyingOptions);
   var req = https.request({
@@ -36,8 +36,7 @@ The following options are supported:
 * ``proxy`` - Specifies the proxy url. The supported format is ``http[s]://[auth@]host:port`` where ``auth``
     is the authentication information in the form of ``username:password``. The authentication information can also be
     in the form of a Base64 encoded ``user:password``, e.g. ``http://dXNlcm5hbWU6cGFzc3dvcmQ=@proxy.example.com:8080``
-* ``server`` - the target server the proxy will connect to. This is primarily used to determine if the proxy should
-    be a tunneling proxy, which will only be true if the target server protocol is https
+* ``tunnel`` - If ``true`` then the proxy will become a tunnel to the server. This should only be ``true`` if the target server protocol is https
 * ``ntlm`` - (experimental) connect to the proxy using NTLM authentication. ``ntlm`` is expected to contain the
     following fields:
     * ``hostname`` - the local machine hostname
