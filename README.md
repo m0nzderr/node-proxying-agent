@@ -98,5 +98,5 @@ The following options are supported:
 
 ## References
 
-# NTLM code was forked from https://github.com/SamDecrock/node-http-ntlm.git
-# NTLM Authentication Scheme for HTTP - http://www.innovation.ch/personal/ronald/ntlm.html
+* NTLM code was forked from https://github.com/SamDecrock/node-http-ntlm.git
+* NTLM Authentication Scheme for HTTP - http://www.innovation.ch/personal/ronald/ntlm.html
