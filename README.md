@@ -78,6 +78,9 @@ The following options are supported:
 
 ### NTLM Authentication
 
+When authenticating using NTLM it is important to delay sending the request data until the socket is assigned to the request.
+Failing to do so will result in the socket being prematurely closed, preventing the NTLM handshake from completing.
+
 ```javascript
   var proxying = require('proxying-agent');
   var proxyingOptions = {
@@ -93,6 +96,11 @@ The following options are supported:
     host: 'example.com',
     port: 443,
     agent: proxyingAgent
+  });
+
+  req.on('socket', function(socket) {
+    req.write('DATA');
+    req.end();
   });
 ```
 
