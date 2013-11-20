@@ -3,10 +3,10 @@
 This a Node http agent capable of forward proxying HTTP/HTTPS requests.
 
 It supports the following:
-* Connect to a proxy with a regular socket or SSL/TLS socket
+* Connect to a proxy with either HTTP or HTTPS
 * Proxying to a remote server using SSL tunneling (via the http CONNECT method)
 * Authenticate with a proxy with Basic authentication
-* Authenticate with a proxy with NTLM authentication (experimental). Depends on ``node-ntlm``
+* Authenticate with a proxy with NTLM authentication (beta)
 
 The agent inherits directly from the ``http.Agent`` Node object so it benefits from all
 the socket handling goodies that come with it.
@@ -16,6 +16,51 @@ the socket handling goodies that come with it.
     npm install proxying-agent
 
 ## Usage
+
+The following options are supported:
+
+* ``proxy`` - Specifies the proxy url. The supported format is ``http[s]://[auth@]host:port`` where ``auth``
+    is the authentication information in the form of ``username:password``. The authentication information can also be
+    in the form of a Base64 encoded ``user:password``, e.g. ``http://dXNlcm5hbWU6cGFzc3dvcmQ=@proxy.example.com:8080``
+* ``tunnel`` - If ``true`` then the proxy will become a tunnel to the server.
+    This should usually be ``true`` only if the target server protocol is ``https``
+* ``authType`` - Proxy authentication type. Possible values are ``basic`` and ``ntlm`` (default is ``basic``).
+* ``ntlm`` - (beta) applicable only if ``authType`` is ``ntlm``. Supported fields:
+    * ``domain`` (required) - the NTLM domain
+    * ``hostname`` (optional) - the local machine hostname
+
+### HTTP Server
+
+```javascript
+  var proxying = require('proxying-agent');
+  var proxyingOptions = {
+    proxy: 'http://proxy.example.com:8080'
+  };
+  var proxyingAgent = new proxying.ProxyingAgent(proxyingOptions);
+  var req = http.request({
+    host: 'example.com',
+    port: 80,
+    agent: proxyingAgent
+  });
+```
+
+### HTTPS Server
+
+```javascript
+  var proxying = require('proxying-agent');
+  var proxyingOptions = {
+    proxy: 'http://proxy.example.com:8080',
+    tunnel: true
+  };
+  var proxyingAgent = new proxying.ProxyingAgent(proxyingOptions);
+  var req = https.request({
+    host: 'example.com',
+    port: 443,
+    agent: proxyingAgent
+  });
+```
+
+### Basic Authentication
 
 ```javascript
   var proxying = require('proxying-agent');
@@ -31,16 +76,27 @@ the socket handling goodies that come with it.
   });
 ```
 
-The following options are supported:
+### NTLM Authentication
 
-* ``proxy`` - Specifies the proxy url. The supported format is ``http[s]://[auth@]host:port`` where ``auth``
-    is the authentication information in the form of ``username:password``. The authentication information can also be
-    in the form of a Base64 encoded ``user:password``, e.g. ``http://dXNlcm5hbWU6cGFzc3dvcmQ=@proxy.example.com:8080``
-* ``tunnel`` - If ``true`` then the proxy will become a tunnel to the server. This should only be ``true`` if the target server protocol is https
-* ``ntlm`` - (experimental) connect to the proxy using NTLM authentication. ``ntlm`` is expected to contain the
-    following fields:
-    * ``hostname`` - the local machine hostname
-    * ``domain`` - the NTLM domain
-    * ``username`` - the NTLM username
-    * ``password`` - the NTLM password
+```javascript
+  var proxying = require('proxying-agent');
+  var proxyingOptions = {
+    proxy: 'http://username:password@proxy.example.com:8080',
+    tunnel: true,
+    authType: 'ntlm',
+    ntlm: {
+      domain: 'MYDOMAIN'
+    }
+  };
+  var proxyingAgent = new proxying.ProxyingAgent(proxyingOptions);
+  var req = https.request({
+    host: 'example.com',
+    port: 443,
+    agent: proxyingAgent
+  });
+```
 
+## References
+
+# NTLM code was forked from https://github.com/SamDecrock/node-http-ntlm.git
+# NTLM Authentication Scheme for HTTP - http://www.innovation.ch/personal/ronald/ntlm.html
