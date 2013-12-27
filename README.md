@@ -27,7 +27,7 @@ The following options are supported:
 * ``authType`` - Proxy authentication type. Possible values are ``basic`` and ``ntlm`` (default is ``basic``).
 * ``ntlm`` - (beta) applicable only if ``authType`` is ``ntlm``. Supported fields:
     * ``domain`` (required) - the NTLM domain
-    * ``hostname`` (optional) - the local machine hostname
+    * ``workstation`` (optional) - the local machine hostname (os.hostname() is not specified)
 
 ### HTTP Server
 
