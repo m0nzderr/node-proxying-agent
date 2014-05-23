@@ -108,3 +108,7 @@ Failing to do so will result in the socket being prematurely closed, preventing 
 
 * NTLM code was forked from https://github.com/SamDecrock/node-http-ntlm.git
 * NTLM Authentication Scheme for HTTP - http://www.innovation.ch/personal/ronald/ntlm.html
+
+## Copyright and License
+
+Copyright 2013-2014 Capriza. Code released under the [MIT license](LICENSE.md)
