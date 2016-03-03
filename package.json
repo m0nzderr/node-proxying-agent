@@ -1,6 +1,6 @@
 {
   "name": "proxying-agent",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Node HTTP/HTTPS Forward Proxy Agent",
   "keywords": [
     "http",
