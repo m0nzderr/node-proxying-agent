@@ -17,27 +17,25 @@ the socket handling goodies that come with it.
 
 ## Usage
 
-The following options are supported:
+### create(options, target)
 
-* ``proxy`` - Specifies the proxy url. The supported format is ``http[s]://[auth@]host:port`` where ``auth``
-    is the authentication information in the form of ``username:password``. The authentication information can also be
-    in the form of a Base64 encoded ``user:password``, e.g. ``http://dXNlcm5hbWU6cGFzc3dvcmQ=@proxy.example.com:8080``
-* ``tunnel`` - If ``true`` then the proxy will become a tunnel to the server.
-    This should usually be ``true`` only if the target server protocol is ``https``
-* ``tlsOptions`` - TLS connection options to use when the target server protocol is ``https``. See http://nodejs.org/api/tls.html#tls_tls_connect_options_callback for a list of available options.
-* ``authType`` - Proxy authentication type. Possible values are ``basic`` and ``ntlm`` (default is ``basic``).
-* ``ntlm`` - (beta) applicable only if ``authType`` is ``ntlm``. Supported fields:
-    * ``domain`` (required) - the NTLM domain
-    * ``workstation`` (optional) - the local machine hostname (os.hostname() is not specified)
+Returns a new agent configured correctly to proxy to the specified target.
+
+* `options` - (string|object) proxy url string or object with the following options:
+  * `proxy` - Specifies the proxy url. The supported format is `http[s]://[auth@]host:port` where auth`
+    is the authentication information in the form of `username:password`. The authentication information can also be
+    in the form of a Base64 encoded `user:password`, e.g. `http://dXNlcm5hbWU6cGFzc3dvcmQ=@proxy.example.com:8080`
+  * `tlsOptions` - TLS connection options to use when the target server protocol is `https`. See http://nodejs.org/api/tls.html#tls_tls_connect_options_callback for a list of available options.
+  * `authType` - Proxy authentication type. Possible values are `basic` and `ntlm` (default is `basic`).
+  * `ntlm` - (beta) applicable only if `authType` is `ntlm`. Supported fields:
+    * `domain` (required) - the NTLM domain
+    * `workstation` (optional) - the local machine hostname (os.hostname() is not specified)
+* `target` - the target url that the agent is to proxy
 
 ### HTTP Server
 
 ```javascript
-  var proxying = require('proxying-agent');
-  var proxyingOptions = {
-    proxy: 'http://proxy.example.com:8080'
-  };
-  var proxyingAgent = new proxying.ProxyingAgent(proxyingOptions);
+  var proxyingAgent = require('proxying-agent').create('http://proxy.example.com:8080', 'http://example.com');
   var req = http.request({
     host: 'example.com',
     port: 80,
@@ -48,12 +46,7 @@ The following options are supported:
 ### HTTPS Server
 
 ```javascript
-  var proxying = require('proxying-agent');
-  var proxyingOptions = {
-    proxy: 'http://proxy.example.com:8080',
-    tunnel: true
-  };
-  var proxyingAgent = new proxying.ProxyingAgent(proxyingOptions);
+  var proxyingAgent = require('proxying-agent').create('http://proxy.example.com:8080', 'https://example.com');
   var req = https.request({
     host: 'example.com',
     port: 443,
@@ -64,12 +57,7 @@ The following options are supported:
 ### Basic Authentication
 
 ```javascript
-  var proxying = require('proxying-agent');
-  var proxyingOptions = {
-    proxy: 'http://username:password@proxy.example.com:8080',
-    tunnel: true
-  };
-  var proxyingAgent = new proxying.ProxyingAgent(proxyingOptions);
+  var proxyingAgent = require('proxying-agent').create('http://username:password@proxy.example.com:8080', 'https://example.com');
   var req = https.request({
     host: 'example.com',
     port: 443,
@@ -83,16 +71,14 @@ When authenticating using NTLM it is important to delay sending the request data
 Failing to do so will result in the socket being prematurely closed, preventing the NTLM handshake from completing.
 
 ```javascript
-  var proxying = require('proxying-agent');
-  var proxyingOptions = {
+  var proxyOptions = {
     proxy: 'http://username:password@proxy.example.com:8080',
-    tunnel: true,
     authType: 'ntlm',
     ntlm: {
       domain: 'MYDOMAIN'
     }
   };
-  var proxyingAgent = new proxying.ProxyingAgent(proxyingOptions);
+  var proxyingAgent = require('proxying-agent').create(proxyOptions, 'https://example.com');
   var req = https.request({
     host: 'example.com',
     port: 443,
@@ -112,4 +98,4 @@ Failing to do so will result in the socket being prematurely closed, preventing 
 
 ## Copyright and License
 
-Copyright 2013-2014 Capriza. Code released under the [MIT license](LICENSE.md)
+Copyright 2016 Capriza. Code released under the [MIT license](LICENSE.md)
