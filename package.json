@@ -1,6 +1,6 @@
 {
   "name": "proxying-agent",
-  "version": "0.1.8",
+  "version": "2.0.0",
   "description": "Node HTTP/HTTPS Forward Proxy Agent",
   "keywords": [
     "http",
@@ -25,6 +25,6 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=0.8.0"
   }
 }
