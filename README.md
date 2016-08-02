@@ -24,7 +24,8 @@ Returns a new agent configured correctly to proxy to the specified target.
 * `options` - (string|object) proxy url string or object with the following options:
   * `proxy` - Specifies the proxy url. The supported format is `http[s]://[auth@]host:port` where `auth`
     is the authentication information in the form of `username:password`. The authentication information can also be
-    in the form of a Base64 encoded `user:password`, e.g. `http://dXNlcm5hbWU6cGFzc3dvcmQ=@proxy.example.com:8080`
+    in the form of a Base64 encoded `user:password`, e.g. `http://dXNlcm5hbWU6cGFzc3dvcmQ=@proxy.example.com:8080`.
+    if the username for NTLM needs to be in the `domain\username` format, specify `domain%5Cusername` instead. 
   * `tlsOptions` - TLS connection options to use when the target server protocol is `https`. See http://nodejs.org/api/tls.html#tls_tls_connect_options_callback for a list of available options.
   * `authType` - Proxy authentication type. Possible values are `basic` and `ntlm` (default is `basic`).
   * `ntlm` - (beta) applicable only if `authType` is `ntlm`. Supported fields:
