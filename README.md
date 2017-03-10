@@ -1,4 +1,7 @@
-# Node HTTP/HTTPS Forward Proxy Agent
+<div align="center"><img src="https://capriza.github.io/images/logos/logos-bird.svg" height="128" /></div>
+
+Node HTTP/HTTPS Forward Proxy Agent
+===
 
 This a Node http agent capable of forward proxying HTTP/HTTPS requests.
 
