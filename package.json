@@ -1,7 +1,7 @@
 {
-  "name": "proxying-agent",
+  "name": "@m0nzderr/proxying-agent",
   "version": "2.1.0",
-  "description": "Node HTTP/HTTPS Forward Proxy Agent",
+  "description": "A fork of Node HTTP/HTTPS Forward Proxy Agent",
   "keywords": [
     "http",
     "https",
@@ -10,18 +10,21 @@
     "tunnel",
     "ntlm"
   ],
-  "homepage": "https://github.com/capriza/node-proxying-agent/",
+  "homepage": "https://github.com/m0nzderr/node-proxying-agent/",
   "author": "Capriza Inc. <backend@capriza.com>",
   "maintainers"    : [
     "Nadav Fischer <nadav.fischer@capriza.com>"
   ],
+  "contributors":[
+    "Illya Kokshenev <sou@illya.com.br>"
+  ],
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/capriza/node-proxying-agent.git"
+    "url": "https://github.com/m0nzderr/node-proxying-agent.git"
   },
   "bugs": {
-    "url": "https://github.com/capriza/node-proxying-agent/issues"
+    "url": "https://github.com/m0nzderr/node-proxying-agent/issues"
   },
   "license": "MIT",
   "engines": {
