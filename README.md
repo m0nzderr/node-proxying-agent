@@ -5,7 +5,7 @@ Node HTTP/HTTPS Forward Proxy Agent
 
 This ia a fork of https://github.com/capriza/node-proxying-agent
 
-Goals:
+Goals (WIP):
 
 1. Address compatibilty issues with <a href="https://github.com/request/request">request</a> library:
 
@@ -26,10 +26,11 @@ It should be possible to do the following:
 
 However, it fails with original 'proxying-agent'.
 
-2. Make waiting for socket transparent to the user. I.e., the
-above code should work the same way regardless of authType.
+2. Make sure the above scenario is transparent to the user regardless of authType.
 
 3. Expose ProxyingAgent class in order to allow extensions.
+
+4. Implement KeepAlive for NTLM connections and other protocol related options.
 
 
 See original documentaiton below.
