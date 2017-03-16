@@ -1,5 +1,3 @@
-<div align="center"><img src="https://capriza.github.io/images/logos/logos-bird.svg" height="128" /></div>
-
 Node HTTP/HTTPS Forward Proxy Agent
 ===
 
@@ -34,6 +32,8 @@ However, it fails with original 'proxying-agent'.
 
 
 See original documentaiton below.
+
+<div align="center"><img src="https://capriza.github.io/images/logos/logos-bird.svg" height="128" /></div>
 
 Node HTTP/HTTPS Forward Proxy Agent
 ===
